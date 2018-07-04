@@ -313,13 +313,24 @@ nav h1 a {
   }
   /*Restaurant review*/
   .inside header {
-    position: relative;
+    position: fixed;
+  }
+  .inside #maincontent {
+    height: 100vh;
+    width: 50vw;
+    overflow: hidden;
+    overflow-y: scroll;
   }
   .inside #maincontent #map-container {
-    /*                top: 145px;
-                position: fixed;
-                width: 45%;
-                height: 100%;
-                right: 0;*/
+    top: 145px;
+    position: fixed;
+    width: 50vw;
+    height: 100%;
+    right: 0;
+  }
+  .inside #footer {
+    position: fixed;
+    bottom: 0;
+    width: 50vw;
   }
 }
