@@ -157,18 +157,21 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
     const li = document.createElement('li');
+    li.setAttribute('role', 'listitem')
 
     const image = document.createElement('img');
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    image.setAttribute('alt', restaurant.name + 'restaurant, ' + restaurant.neighborhood);
+
     li.append(image);
-    image.setAttribute('alt', restaurant.name);
 
     const textWrapper = document.createElement('div');
     textWrapper.classList.add('restaurant-text-wrapper');
 
     const name = document.createElement('h1');
     name.innerHTML = restaurant.name;
+    //name.setAttribute('tabindex', '0');
     textWrapper.append(name);
 
     const neighborhood = document.createElement('p');
@@ -180,8 +183,10 @@ createRestaurantHTML = (restaurant) => {
     textWrapper.append(address);
 
     const more = document.createElement('a');
+    more.setAttribute('tabindex', '0');
     more.innerHTML = 'View Details';
     more.href = DBHelper.urlForRestaurant(restaurant);
+
     textWrapper.append(more)
 
     li.append(textWrapper);
@@ -193,25 +198,15 @@ createRestaurantHTML = (restaurant) => {
  * Add markers for current restaurants to the map.
  */
 addMarkersToMap = (restaurants = self.restaurants) => {
-        restaurants.forEach(restaurant => {
-            // Add marker to the map
-            const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
-            marker.on("click", onClick);
-
-            function onClick() {
-                window.location.href = marker.options.url;
-            }
-            self.markers.push(marker);
-        });
-
-    }
-    /* addMarkersToMap = (restaurants = self.restaurants) => {
-      restaurants.forEach(restaurant => {
+    restaurants.forEach(restaurant => {
         // Add marker to the map
-        const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-        google.maps.event.addListener(marker, 'click', () => {
-          window.location.href = marker.url
-        });
+        const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
+        marker.on("click", onClick);
+
+        function onClick() {
+            window.location.href = marker.options.url;
+        }
         self.markers.push(marker);
-      });
-    } */
+    });
+
+}
