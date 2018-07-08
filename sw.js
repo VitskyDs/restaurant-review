@@ -7,13 +7,6 @@ self.addEventListener('install', (event) => {
 });
 
 //listen to fetch. respond from the cache.
-/*self.addEventListener('fetch', (event) => {
-    console.log('The service worker is serving the asset.');
-    event.respondWith(fromNetwork(event.request, 400).catch(() => {
-        return fromCache(event.request);
-    }));
-    event.respondWith(update(event.request));
-});*/
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then(function (response) {
