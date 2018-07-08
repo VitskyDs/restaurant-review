@@ -24,9 +24,9 @@ const precache = () => {
             'index.html',
             'favicon.ico',
             'index.js',
-            'resturant.html',
+            'restaurant.html',
             'css/styles.css',
-            'data/restuarant.json',
+            'data/restaurants.json',
             'js/main.js',
             'js/dbhelper.js',
             'js/restaurant_info.js'

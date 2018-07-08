@@ -8,7 +8,7 @@ var markers = []
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-    initMap(); // added
+    initMap();
     fetchNeighborhoods();
     fetchCuisines();
 });
@@ -148,8 +148,9 @@ createRestaurantHTML = (restaurant) => {
     li.setAttribute('role', 'listitem')
 
     const image = document.createElement('img');
-    image.classList.add('restaurant-img');
-    image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    image.classList.add('restaurant-img', 'b-lazy');
+    image.src = 'img/placeholder-image.jpg';
+    image.setAttribute('data-src',  DBHelper.imageUrlForRestaurant(restaurant));
     image.setAttribute('alt', restaurant.name + 'restaurant, ' + restaurant.neighborhood);
 
     li.append(image);
