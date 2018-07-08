@@ -16,12 +16,10 @@ self.addEventListener('install', (event) => {
 });*/
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-
         caches.match(event.request).then(function (response) {
             update(event.request);
             return response || fetch(event.request);
-        });
-    );
+        }));
 });
 
 
