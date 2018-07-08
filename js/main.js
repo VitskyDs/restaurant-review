@@ -157,7 +157,7 @@ createRestaurantHTML = (restaurant) => {
     const textWrapper = document.createElement('div');
     textWrapper.classList.add('restaurant-text-wrapper');
 
-    const name = document.createElement('h1');
+    const name = document.createElement('h2');
     name.innerHTML = restaurant.name;
     //name.setAttribute('tabindex', '0');
     textWrapper.append(name);
